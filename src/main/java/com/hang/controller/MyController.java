@@ -1,5 +1,6 @@
 package com.hang.controller;
 
+import com.hang.entity.test.ParamBean;
 import com.hang.service.MyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,9 +20,18 @@ public class MyController {
 
     @Value("${debug}")
     private String debug; //param --debug=hello.txt
+
+    @Autowired
+    private ParamBean paramBean;
     @RequestMapping("/")
     String home(){
         return myService.getRunParam();
         //return "param:"+ debug;
     }
+    @RequestMapping("/name")
+    String getName(){
+        System.out.println("==============name controller starting=================");
+        return paramBean.getName();
+    }
+
 }

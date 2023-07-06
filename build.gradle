@@ -24,3 +24,7 @@ dependencies {
 tasks.named('test',Test){
     useJUnitPlatform()
 }
+
+bootRun{
+    args "--debug=hello","--name=hi"
+}
