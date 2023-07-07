@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ParamBean {
 
-    @Value("${name}")
+    @Value("${name:default}") //if name is null, value will be default
     private String name;
 
     public String getName() {

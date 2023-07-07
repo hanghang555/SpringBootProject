@@ -18,8 +18,11 @@ public class MyController {
     @Autowired
     private MyService myService; //param --debug hello.txt
 
-    @Value("${debug}")
+    @Value("${debug:debug}")
     private String debug; //param --debug=hello.txt
+
+    @Value("${username1}")
+    private String username;
 
     @Autowired
     private ParamBean paramBean;
@@ -32,6 +35,12 @@ public class MyController {
     String getName(){
         System.out.println("==============name controller starting=================");
         return paramBean.getName();
+    }
+
+    @RequestMapping("/username")
+    String getUserName(){
+        System.out.println("==============username1 controller starting=================");
+        return username;
     }
 
 }

@@ -1,0 +1,27 @@
+#configtree: filename is key content is key
+spring:
+  config:
+    import: optional:configtree:D:/learn/webapp/SpringBootProject/src/main/resources/etc/config/
+  application:
+    name: SpringBootProject
+
+my:
+  service:
+    enabled: false
+    remote-address: 127.0.0.1
+    security:
+      username: hang
+      password: 123321
+      roles:
+        - stu
+        - tea
+
+--- #multi-document syntax
+spring:
+  application:
+    name: SpringBootProject1
+  config:
+    activate:
+      # only active when running on Kubernetes, and only when either the dev or uat profiles are active
+      on-profile: dev | uat
+      on-cloud-platform: none
