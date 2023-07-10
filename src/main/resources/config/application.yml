@@ -4,6 +4,10 @@ spring:
     import: optional:configtree:D:/learn/webapp/SpringBootProject/src/main/resources/etc/config/
   application:
     name: SpringBootProject
+  #i18n配置
+  messages:
+    basename: i18n.messages
+    fallback-to-system-locale: false #没有默认值
 
 my:
   service:
@@ -15,6 +19,7 @@ my:
       roles:
         - stu
         - tea
+
 
 --- #multi-document syntax
 spring:

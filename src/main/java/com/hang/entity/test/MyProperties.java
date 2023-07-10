@@ -1,7 +1,7 @@
 package com.hang.entity.test;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
 import java.net.InetAddress;
 import java.util.ArrayList;
@@ -16,6 +16,7 @@ import java.util.List;
  * @Version 1.0
  */
 @ConfigurationProperties("my.service")//setter/getter or constructor
+@Validated
 public class MyProperties {
     private boolean enabled;
 
