@@ -8,11 +8,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.availability.ApplicationAvailability;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.stereotype.Component;
 
 import java.util.Locale;
 
-@SpringBootTest
+@SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.ALWAYS)
+@Import(TestClass.class)
 public class SpringTest {
     @Autowired
     private MyService myService;
@@ -28,6 +33,9 @@ public class SpringTest {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    private TestClass testClass;
 
     @Test
     public void test(){
@@ -57,5 +65,16 @@ public class SpringTest {
         MyProperties properties = objectMapper.readValue(value, MyProperties.class);
         System.out.println("properties :"+ properties);
     }
+}
+@TestConfiguration
+class TestClass{
+    private String name = "hh";
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
